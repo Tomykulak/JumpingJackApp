@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="24B91" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="SkinData" representedClassName="SkinData" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="ownedByUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserData" inverseName="activeSkin" inverseEntity="UserData"/>
+        <relationship name="ownedByUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserData" inverseName="ownedSkins" inverseEntity="UserData"/>
+    </entity>
+    <entity name="UserData" representedClassName="UserData" syncable="YES" codeGenerationType="class">
+        <attribute name="coins" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="currentSkin" optional="YES" attributeType="String"/>
+        <attribute name="facebookId" optional="YES" attributeType="String"/>
+        <attribute name="gems" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="highestScore" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="activeSkin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkinData" inverseName="ownedByUser" inverseEntity="SkinData"/>
+        <relationship name="ownedSkins" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkinData" inverseName="ownedByUsers" inverseEntity="SkinData"/>
+    </entity>
+</model>
